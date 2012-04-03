@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/prefs_googl_title" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/prefs_key_googl_chkbox"
+            android:title="@string/prefs_googl_chkbox_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefs_bitly_title" >
+        <net.thauvin.erik.android.emaily.BitlyCredsDialog
+            android:dialogLayout="@layout/bitlycreds"
+            android:dialogTitle="@string/prefs_bitly_creds_dialog_title"
+            android:key="@string/prefs_key_bitly_creds"
+            android:negativeButtonText="@string/prefs_bitly_creds_cancel"
+            android:positiveButtonText="@string/prefs_bitly_creds_ok"
+            android:summary="@string/prefs_bitly_creds_summary"
+            android:title="@string/prefs_bitly_creds_title" >
+        </net.thauvin.erik.android.emaily.BitlyCredsDialog>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefs_about_title" >
+        <Preference
+            android:enabled="false"
+            android:key="@string/prefs_key_version"
+            android:singleLine="true"
+            android:summary="@string/prefs_copyright"
+            android:title="@string/prefs_version_title" />
+
+        <PreferenceScreen
+            android:summary="@string/prefs_help_summary"
+            android:title="@string/prefs_help_title" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/prefs_help_url" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="@string/prefs_key_feedback"
+            android:summary="@string/prefs_feedback_summary"
+            android:title="@string/prefs_feedback_title" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/prefs_feedback_url" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>
