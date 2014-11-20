@@ -1,7 +1,7 @@
 /*
  * @(#)Emaily.java
  *
- * Copyright (c) 2011-2012 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2014 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -88,6 +88,7 @@ import com.google.api.services.urlshortener.model.Url;
  * @created Oct 11, 2011
  * @since 1.0
  */
+@SuppressWarnings( "deprecation" )
 public class Emaily extends Activity
 {
 	private static final String ACCOUNT_TYPE = "com.google";
@@ -103,7 +104,7 @@ public class Emaily extends Activity
 
 		final Intent intent = getIntent();
 
-		appName = getApplicationContext().getResources().getString(R.string.app_name);
+		appName = getString(R.string.app_name);
 		sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (Intent.ACTION_SEND.equals(intent.getAction()))
@@ -346,17 +347,17 @@ public class Emaily extends Activity
 		{
 			final EmailyResult result = new EmailyResult(intent[0]);
 
-			final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+			final Intent emailIntent = new Intent(Intent.ACTION_SEND);
 			emailIntent.setType("text/html");
 
 			final Bundle extras = intent[0].getExtras();
 
-			final String pageUrl = extras.getString("android.intent.extra.TEXT");
-			final String pageTitle = extras.getString("android.intent.extra.SUBJECT");
+			final String pageUrl = extras.getString(Intent.EXTRA_TEXT);
+			final String pageTitle = extras.getString(Intent.EXTRA_SUBJECT);
 
 			if (isValid(pageTitle))
 			{
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, pageTitle);
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, pageTitle);
 			}
 
 			final boolean hasCredentials = isValid(username) && isValid(keytoken);
@@ -499,20 +500,20 @@ public class Emaily extends Activity
 			{
 				if (shortUrl.length() > 0)
 				{
-					emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+					emailIntent.putExtra(Intent.EXTRA_TEXT,
 							Html.fromHtml("<a href=\"" + shortUrl + "\">" + shortUrl + "</a>"));
 				}
 				else
 				{
-					final CharSequence text = extras.getCharSequence("android.intent.extra.TEXT");
+					final CharSequence text = extras.getCharSequence(Intent.EXTRA_TEXT);
 
 					if (text.length() > 0)
 					{
-						emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+						emailIntent.putExtra(Intent.EXTRA_TEXT, text);
 					}
 					else if (isValid(pageUrl))
 					{
-						emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, pageUrl);
+						emailIntent.putExtra(Intent.EXTRA_TEXT, pageUrl);
 					}
 				}
 
@@ -524,7 +525,6 @@ public class Emaily extends Activity
 				{
 					if (!result.hasError() && shortUrl.length() > 0)
 					{
-
 						final ClipboardManager clip = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 						clip.setText(shortUrl);
 

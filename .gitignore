@@ -1,9 +1,10 @@
+/.classpath
+/.idea/libraries
+/.idea/workspace.xml
+/.pmd
+/.project
 /.svn/
 /bin
 /gen
 /proguard
 /project.properties
-/.classpath
-/.project
-/.pmd
-

@@ -18,6 +18,12 @@
             android:title="@string/prefs_bitly_creds_title" >
         </net.thauvin.erik.android.emaily.BitlyCredsDialog>
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefs_html_title" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/prefs_key_html_chkbox"
+            android:title="@string/prefs_html_chkbox_title" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/prefs_about_title" >
         <Preference
             android:enabled="false"
