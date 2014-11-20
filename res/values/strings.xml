@@ -19,7 +19,7 @@
     <string name="prefs_bitly_creds_url">http://bitly.com/a/your_api_key/</string>
     <string name="prefs_bitly_creds_username">Username</string>
     <string name="prefs_bitly_title">bit.ly</string>
-    <string name="prefs_copyright">© 2012 Erik C. Thauvin</string>
+    <string name="prefs_copyright">© 2012-14 Erik C. Thauvin</string>
     <string name="prefs_feedback_subject">%1$s %2$s %3$s (%4$s %5$s, %6$s)</string>
     <string name="prefs_feedback_summary">Send email, please check Help first…</string>
     <string name="prefs_feedback_title">Feedback</string>
@@ -29,6 +29,8 @@
     <string name="prefs_help_summary">Learn how to use…</string>
     <string name="prefs_help_title">Help</string>
     <string name="prefs_help_url">http://m.thauvin.net/android/Emaily/help/</string>
+    <string name="prefs_html_title">HTML</string>
+    <string name="prefs_html_chkbox_title">Send email as HTML?</string>
     <string name="prefs_key_bitly_apikey">prefs_bitly_apikey</string>
     <string name="prefs_key_bitly_creds">prefs_bitly_creds</string>
     <string name="prefs_key_bitly_username">prefs_bitly_username</string>
@@ -38,6 +40,7 @@
     <string name="prefs_key_googl_enabled">prefs_google_enabled</string>
     <string name="prefs_key_googl_token">prefs_googl_token</string>
     <string name="prefs_key_googl_token_expiry">prefs_gool_token_expiry</string>
+    <string name="prefs_key_html_chkbox">prefs_html_chkbox</string>
     <string name="prefs_key_version">prefs_version</string>
     <string name="prefs_version_title">Version</string>
     <string name="progress_msg">Shortening url…</string>

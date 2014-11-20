@@ -36,6 +36,8 @@
  */
 package net.thauvin.erik.android.emaily;
 
+import java.util.Locale;
+
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -56,6 +58,7 @@ import android.preference.PreferenceScreen;
  * @created Oct 11, 2011
  * @since 1.0
  */
+@SuppressWarnings("deprecation")
 public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
 	private SharedPreferences sharedPrefs;
@@ -97,8 +100,8 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
 					Uri.parse(getString(R.string.prefs_feedback_url)
 							+ "?subject="
 							+ getString(R.string.prefs_feedback_subject, getString(R.string.app_name), vNumber,
-									getString(R.string.prefs_feedback_title).toLowerCase(), Build.MANUFACTURER, Build.PRODUCT,
-									Build.VERSION.RELEASE)));
+									getString(R.string.prefs_feedback_title).toLowerCase(Locale.getDefault()), Build.MANUFACTURER,
+									Build.PRODUCT, Build.VERSION.RELEASE)));
 
 		}
 		catch (NameNotFoundException ignore)
