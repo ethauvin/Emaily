@@ -1,7 +1,7 @@
 /*
  * @(#)Emaily.java
  *
- * Copyright (c) 2011-2014 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2012 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -88,7 +88,7 @@ import com.google.api.services.urlshortener.model.Url;
  * @created Oct 11, 2011
  * @since 1.0
  */
-@SuppressWarnings( "deprecation" )
+@SuppressWarnings("deprecation")
 public class Emaily extends Activity
 {
 	private static final String ACCOUNT_TYPE = "com.google";
@@ -109,7 +109,7 @@ public class Emaily extends Activity
 
 		if (Intent.ACTION_SEND.equals(intent.getAction()))
 		{
-			final boolean isGoogl = sharedPrefs.getBoolean(getString(R.string.prefs_key_googl_enabled), true);
+			final boolean isGoogl = getBoolPref(R.string.prefs_key_googl_enabled, true);
 
 			if (isGoogl)
 			{
@@ -192,11 +192,13 @@ public class Emaily extends Activity
 
 		if (isGoogl)
 		{
-			task = new EmailyTask(getPref(R.string.prefs_key_googl_account), getPref(R.string.prefs_key_googl_token), isGoogl, isRetry);
+			task = new EmailyTask(getPref(R.string.prefs_key_googl_account), getPref(R.string.prefs_key_googl_token), isGoogl,
+					getBoolPref(R.string.prefs_key_html_chkbox), isRetry);
 		}
 		else
 		{
-			task = new EmailyTask(getPref(R.string.prefs_key_bitly_username), getPref(R.string.prefs_key_bitly_apikey), isGoogl, isRetry);
+			task = new EmailyTask(getPref(R.string.prefs_key_bitly_username), getPref(R.string.prefs_key_bitly_apikey), isGoogl,
+					getBoolPref(R.string.prefs_key_html_chkbox), isRetry);
 		}
 
 		task.execute(intent);
@@ -206,7 +208,6 @@ public class Emaily extends Activity
 	 * Starts the task.
 	 * 
 	 * @param intent The original intent.
-	 * @param sharedPrefs The shared preference.
 	 * @param account The account.
 	 * @param isRetry The retry flag.
 	 */
@@ -299,7 +300,7 @@ public class Emaily extends Activity
 	}
 
 	/**
-	 * Returns the value of the specified shared reference based on the specified string id. The default value is empty string.
+	 * Returns the value of the specified shared reference based on the specified string id. The default value is an empty string.
 	 * 
 	 * @param sharedPrefs The shared preference.
 	 * @param id The string id.
@@ -324,6 +325,31 @@ public class Emaily extends Activity
 	}
 
 	/**
+	 * Returns the value of the specified shared reference based on the specified string id. The default value is <code>false</code>.
+	 * 
+	 * @param sharedPrefs The shared preference.
+	 * @param id The string id.
+	 * @return The preference value.
+	 */
+	public boolean getBoolPref(int id)
+	{
+		return getBoolPref(id, false);
+	}
+
+	/**
+	 * Returns the value of the specified shared reference based on the specified string id.
+	 * 
+	 * @param sharedPrefs The shared preference.
+	 * @param id The string id.
+	 * @param defaultValue The default value, used if the preference is empty.
+	 * @return The preference value.
+	 */
+	public boolean getBoolPref(int id, boolean defaultValue)
+	{
+		return sharedPrefs.getBoolean(getString(id), defaultValue);
+	}
+
+	/**
 	 * The <code>EmailyTask</code> class.
 	 */
 	private class EmailyTask extends AsyncTask<Intent, Void, EmailyResult>
@@ -332,13 +358,15 @@ public class Emaily extends Activity
 		private final String username;
 		private final String keytoken;
 		private final boolean isGoogl;
+		private final boolean isHtml;
 		private final boolean isRetry;
 
-		public EmailyTask(String username, String keytoken, boolean isGoogl, boolean isRetry)
+		public EmailyTask(String username, String keytoken, boolean isGoogl, boolean isHtml, boolean isRetry)
 		{
 			this.username = username;
 			this.keytoken = keytoken;
 			this.isGoogl = isGoogl;
+			this.isHtml = isHtml;
 			this.isRetry = isRetry;
 		}
 
@@ -348,7 +376,15 @@ public class Emaily extends Activity
 			final EmailyResult result = new EmailyResult(intent[0]);
 
 			final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-			emailIntent.setType("text/html");
+
+			if (isHtml)
+			{
+				emailIntent.setType("text/html");
+			}
+			else
+			{
+				emailIntent.setType("text/plain");
+			}
 
 			final Bundle extras = intent[0].getExtras();
 
@@ -500,8 +536,14 @@ public class Emaily extends Activity
 			{
 				if (shortUrl.length() > 0)
 				{
-					emailIntent.putExtra(Intent.EXTRA_TEXT,
-							Html.fromHtml("<a href=\"" + shortUrl + "\">" + shortUrl + "</a>"));
+					if (isHtml)
+					{
+						emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<a href=\"" + shortUrl + "\">" + shortUrl + "</a>"));
+					}
+					else
+					{
+						emailIntent.putExtra(Intent.EXTRA_TEXT, shortUrl.toString());
+					}
 				}
 				else
 				{
