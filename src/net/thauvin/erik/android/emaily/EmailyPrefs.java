@@ -1,7 +1,7 @@
 /*
  * @(#)EmailyPrefs.java
  *
- * Copyright (c) 2011-2012 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2014 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
