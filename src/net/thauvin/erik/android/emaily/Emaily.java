@@ -386,10 +386,12 @@ public class Emaily extends Activity
 				emailIntent.setType("text/plain");
 			}
 
+
 			final Bundle extras = intent[0].getExtras();
 
 			final String pageUrl = extras.getString(Intent.EXTRA_TEXT);
 			final String pageTitle = extras.getString(Intent.EXTRA_SUBJECT);
+			final StringBuilder textBefore = new StringBuilder();
 
 			if (isValid(pageTitle))
 			{
@@ -417,7 +419,9 @@ public class Emaily extends Activity
 
 				final Url toInsert = new Url();
 
-				for (String item : pageUrl.split("\\s"))
+				final String[] splits = pageUrl.split("\\s");
+
+				for (String item : splits)
 				{
 					try
 					{
@@ -524,6 +528,12 @@ public class Emaily extends Activity
 					{
 						Log.d(appName, "Attempted to process an invalid URL: " + item, mue);
 
+						if (textBefore.length() > 0)
+						{
+							textBefore.append(" ");
+						}
+
+						textBefore.append(item);
 					}
 				}
 			}
@@ -544,14 +554,19 @@ public class Emaily extends Activity
 					{
 						emailIntent.putExtra(Intent.EXTRA_TEXT, shortUrl.toString());
 					}
+
+					if (!isValid(pageTitle) && textBefore.length() > 0)
+					{
+						emailIntent.putExtra(Intent.EXTRA_SUBJECT, textBefore.toString());
+					}
 				}
 				else
 				{
-					final CharSequence text = extras.getCharSequence(Intent.EXTRA_TEXT);
+					final CharSequence chars = extras.getCharSequence(Intent.EXTRA_TEXT);
 
-					if (text.length() > 0)
+					if (chars.length() > 0)
 					{
-						emailIntent.putExtra(Intent.EXTRA_TEXT, text);
+						emailIntent.putExtra(Intent.EXTRA_TEXT, chars);
 					}
 					else if (isValid(pageUrl))
 					{
