@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.thauvin.erik.android.emaily"
     android:versionCode="2"
-    android:versionName="1.1b7" >
+    android:versionName="1.1b8" >
 
     <uses-sdk
         android:minSdkVersion="10"
