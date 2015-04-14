@@ -7,7 +7,7 @@
     <string name="alert_notfound">Sorry. No applications can perform this action.</string>
     <string name="alert_notfound_clip">Sorry. No applications can perform this action. The shortened url has been copied to the clipboard.</string>
     <string name="app_name">Emaily</string>
-    <string name="dialog_accounts_title">Select a Google account</string>
+    <string name="dialog_accounts_title">Select a Google account to shorten with</string>
     <string name="prefs_about_title">About</string>
     <string name="prefs_bitly_creds_apikey">API Key</string>
     <string name="prefs_bitly_creds_cancel">Cancel</string>
@@ -19,7 +19,7 @@
     <string name="prefs_bitly_creds_url">http://bitly.com/a/your_api_key/</string>
     <string name="prefs_bitly_creds_username">Username</string>
     <string name="prefs_bitly_title">bit.ly</string>
-    <string name="prefs_copyright">© 2012–14 Erik C. Thauvin</string>
+    <string name="prefs_copyright">© 2012–15 Erik C. Thauvin</string>
     <string name="prefs_feedback_subject">%1$s %2$s %3$s (%4$s %5$s, %6$s)</string>
     <string name="prefs_feedback_summary">Send email, please check Help first…</string>
     <string name="prefs_feedback_title">Feedback</string>

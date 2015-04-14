@@ -1,7 +1,7 @@
 /*
  * @(#)EmailyPrefs.java
  *
- * Copyright (c) 2011-2014 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2015 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,6 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * $Id$
- *
  */
 package net.thauvin.erik.android.emaily;
 
@@ -54,7 +51,6 @@ import android.preference.PreferenceScreen;
  * The <code>EmailyPrefs</code> class implements a preferences screen.
  * 
  * @author <a href="mailto:erik@thauvin.net">Erik C. Thauvin</a>
- * @version $Revision$
  * @created Oct 11, 2011
  * @since 1.0
  */
