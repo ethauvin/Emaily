@@ -1,7 +1,7 @@
 /*
  * @(#)Emaily.java
  *
- * Copyright (c) 2011-2012 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2015 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,6 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * $Id$
- *
  */
 package net.thauvin.erik.android.emaily;
 
@@ -84,7 +81,6 @@ import com.google.api.services.urlshortener.model.Url;
  * The <code>Emaily</code> class implements a URL shortener intent.
  *
  * @author <a href="mailto:erik@thauvin.net">Erik C. Thauvin</a>
- * @version $Revision$
  * @created Oct 11, 2011
  * @since 1.0
  */
@@ -349,7 +345,7 @@ public class Emaily extends Activity
      */
     private class EmailyTask extends AsyncTask<Intent, Void, EmailyResult>
     {
-        private final ProgressDialog dialog = new ProgressDialog(Emaily.this);
+        private final ProgressDialog dialog = new ProgressDialog(Emaily.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         private final String username;
         private final String keytoken;
         private final boolean isGoogl;

@@ -1,7 +1,7 @@
 /*
- * @(#)Emaily.java
+ * @(#)BitlyCredsDialog.java
  *
- * Copyright (c) 2012 Erik C. Thauvin (http://erik.thauvin.net/)
+ * Copyright (c) 2011-2015 Erik C. Thauvin (http://erik.thauvin.net/)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,6 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * $Id$
- *
  */
 package net.thauvin.erik.android.emaily;
 
@@ -51,7 +48,6 @@ import android.widget.TextView;
  * The <code>BitlyCredsDialog</code> class implements a bit.ly credential dialog.
  * 
  * @author <a href="mailto:erik@thauvin.net">Erik C. Thauvin</a>
- * @version $Revision$
  * @created March 28, 2012
  * @since 1.0
  */

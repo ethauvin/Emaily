@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "net.thauvin.erik.android.emaily"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 2
         versionName "1.1b9"
