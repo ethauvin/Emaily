@@ -1,10 +1,7 @@
-/.classpath
-/.idea/libraries
+.gradle
+/local.properties
 /.idea/workspace.xml
-/.pmd
-/.project
-/.svn/
-/bin
-/gen
-/proguard
-/project.properties
+/.idea/libraries
+.DS_Store
+/build
+/captures

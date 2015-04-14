@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="alert_error">Sorry. An error was returned by %2$s while shortening the url: %1$s</string>
+    <string name="alert_nocreds">Please provide your credentials to shorten urls.</string>
+    <string name="alert_nohost">Sorry. Could not connect to %1$s.</string>
+    <string name="alert_notfound">Sorry. No applications can perform this action.</string>
+    <string name="alert_notfound_clip">Sorry. No applications can perform this action. The shortened url has been copied to the clipboard.</string>
+    <string name="app_name">Emaily</string>
+    <string name="dialog_accounts_title">Select a Google account</string>
+    <string name="prefs_about_title">About</string>
+    <string name="prefs_bitly_creds_apikey">API Key</string>
+    <string name="prefs_bitly_creds_cancel">Cancel</string>
+    <string name="prefs_bitly_creds_dialog_title">Bit.ly API Credentials</string>
+    <string name="prefs_bitly_creds_noapi"><u>Need an API key?</u></string>
+    <string name="prefs_bitly_creds_ok">OK</string>
+    <string name="prefs_bitly_creds_summary">Enter your credentials…</string>
+    <string name="prefs_bitly_creds_title">API Credentials</string>
+    <string name="prefs_bitly_creds_url">http://bitly.com/a/your_api_key/</string>
+    <string name="prefs_bitly_creds_username">Username</string>
+    <string name="prefs_bitly_title">bit.ly</string>
+    <string name="prefs_copyright">© 2012–14 Erik C. Thauvin</string>
+    <string name="prefs_feedback_subject">%1$s %2$s %3$s (%4$s %5$s, %6$s)</string>
+    <string name="prefs_feedback_summary">Send email, please check Help first…</string>
+    <string name="prefs_feedback_title">Feedback</string>
+    <string name="prefs_feedback_url">mailto:erik@thauvin.net</string>
+    <string name="prefs_googl_chkbox_title">Use as shorterner?</string>
+    <string name="prefs_googl_title">goo.gl</string>
+    <string name="prefs_help_summary">Learn how to use…</string>
+    <string name="prefs_help_title">Help</string>
+    <string name="prefs_help_url">http://m.thauvin.net/android/Emaily/help/</string>
+    <string name="prefs_html_title">HTML</string>
+    <string name="prefs_html_chkbox_title">Send email as HTML?</string>
+    <string name="prefs_key_bitly_apikey">prefs_bitly_apikey</string>
+    <string name="prefs_key_bitly_creds">prefs_bitly_creds</string>
+    <string name="prefs_key_bitly_username">prefs_bitly_username</string>
+    <string name="prefs_key_feedback">prefs_feedback</string>
+    <string name="prefs_key_googl_account">prefs_googl_account</string>
+    <string name="prefs_key_googl_chkbox">prefs_googl_chkbox</string>
+    <string name="prefs_key_googl_enabled">prefs_google_enabled</string>
+    <string name="prefs_key_googl_token">prefs_googl_token</string>
+    <string name="prefs_key_googl_token_expiry">prefs_gool_token_expiry</string>
+    <string name="prefs_key_html_chkbox">prefs_html_chkbox</string>
+    <string name="prefs_key_version">prefs_version</string>
+    <string name="prefs_version_title">Version</string>
+    <string name="progress_msg">Shortening url…</string>
+    <string name="progress_msg_retry">Retrying…</string>
+
+</resources>
