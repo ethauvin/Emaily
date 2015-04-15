@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'versionPlugin'
 
 android {
     compileSdkVersion 22
@@ -11,6 +12,7 @@ android {
         versionCode 2
         versionName "1.1b10"
     }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -22,6 +24,13 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/ASL2.0'
+    }
+
+    versionPlugin {
+        buildTypesMatcher = 'release'
+        supportBuildNumber = false
+
+        fileNameFormat = '$projectName'
     }
 }
 
