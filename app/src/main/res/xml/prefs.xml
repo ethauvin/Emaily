@@ -25,13 +25,6 @@
             android:title="@string/prefs_html_chkbox_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/prefs_about_title">
-        <Preference
-            android:enabled="false"
-            android:key="@string/prefs_key_version"
-            android:singleLine="true"
-            android:summary="@string/prefs_copyright"
-            android:title="@string/prefs_version_title"/>
-
         <PreferenceScreen
             android:summary="@string/prefs_help_summary"
             android:title="@string/prefs_help_title">
@@ -47,6 +40,12 @@
                 android:action="android.intent.action.VIEW"
                 android:data="@string/prefs_feedback_url"/>
         </PreferenceScreen>
+        <Preference
+            android:enabled="false"
+            android:key="@string/prefs_key_version"
+            android:singleLine="true"
+            android:summary="@string/prefs_copyright"
+            android:title="@string/prefs_version_title"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

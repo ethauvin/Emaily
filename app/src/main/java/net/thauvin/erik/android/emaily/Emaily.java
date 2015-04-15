@@ -47,6 +47,7 @@ import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
 import android.accounts.AccountManagerFuture;
 import android.accounts.OperationCanceledException;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -84,7 +85,6 @@ import com.google.api.services.urlshortener.model.Url;
  * @created Oct 11, 2011
  * @since 1.0
  */
-@SuppressWarnings("deprecation")
 public class Emaily extends Activity
 {
     private static final String ACCOUNT_TYPE = "com.google";
@@ -93,6 +93,7 @@ public class Emaily extends Activity
     private String appName;
     private SharedPreferences sharedPrefs;
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -158,12 +159,14 @@ public class Emaily extends Activity
                     }
                     else
                     {
+                        //noinspection ConstantConditions
                         startEmailyTask(intent, isGoogl, false);
                     }
                 }
             }
             else
             {
+                //noinspection ConstantConditions
                 startEmailyTask(intent, isGoogl, false);
             }
         }
@@ -187,11 +190,13 @@ public class Emaily extends Activity
 
         if (isGoogl)
         {
+            //noinspection ConstantConditions
             task = new EmailyTask(getPref(R.string.prefs_key_googl_account), getPref(R.string.prefs_key_googl_token), isGoogl,
                     getBoolPref(R.string.prefs_key_html_chkbox), isRetry);
         }
         else
         {
+            //noinspection ConstantConditions
             task = new EmailyTask(getPref(R.string.prefs_key_bitly_username), getPref(R.string.prefs_key_bitly_apikey), isGoogl,
                     getBoolPref(R.string.prefs_key_html_chkbox), isRetry);
         }
@@ -229,6 +234,7 @@ public class Emaily extends Activity
 
         googleAccountManager.manager.getAuthToken(account, OAUTH_URL, null, Emaily.this, new AccountManagerCallback<Bundle>()
         {
+            @SuppressLint("CommitPrefEdits")
             @Override
             public void run(AccountManagerFuture<Bundle> future)
             {
@@ -276,7 +282,8 @@ public class Emaily extends Activity
      *
      * @param intent The original intent.
      */
-    public void retry(final Intent intent)
+    @SuppressLint("CommitPrefEdits")
+    private void retry(final Intent intent)
     {
         sharedPrefs.edit().putLong(getString(R.string.prefs_key_googl_token_expiry), 0L).commit();
 
@@ -300,7 +307,7 @@ public class Emaily extends Activity
      * @param id The string id.
      * @return The preference value.
      */
-    public String getPref(int id)
+    private String getPref(int id)
     {
         return getPref(id, "");
     }
@@ -312,7 +319,7 @@ public class Emaily extends Activity
      * @param defaultValue The default value, used if the preference is empty.
      * @return The preference value.
      */
-    public String getPref(int id, String defaultValue)
+    private String getPref(int id, String defaultValue)
     {
         return sharedPrefs.getString(getString(id), defaultValue);
     }
@@ -323,7 +330,7 @@ public class Emaily extends Activity
      * @param id The string id.
      * @return The preference value.
      */
-    public boolean getBoolPref(int id)
+    private boolean getBoolPref(int id)
     {
         return getBoolPref(id, false);
     }
@@ -335,7 +342,7 @@ public class Emaily extends Activity
      * @param defaultValue The default value, used if the preference is empty.
      * @return The preference value.
      */
-    public boolean getBoolPref(int id, boolean defaultValue)
+    private boolean getBoolPref(int id, boolean defaultValue)
     {
         return sharedPrefs.getBoolean(getString(id), defaultValue);
     }
@@ -572,6 +579,7 @@ public class Emaily extends Activity
                 {
                     if (!result.hasError() && shortUrl.length() > 0)
                     {
+                        @SuppressWarnings("deprecation")
                         final ClipboardManager clip = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                         clip.setText(shortUrl);
 

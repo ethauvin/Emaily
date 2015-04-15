@@ -35,6 +35,7 @@ package net.thauvin.erik.android.emaily;
 
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -58,10 +59,9 @@ import android.preference.PreferenceScreen;
 public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
 	private SharedPreferences sharedPrefs;
-	private Editor prefsEditor;
 
-	private CheckBoxPreference mGooglBox;
-	private BitlyCredsDialog mBitlyCreds;
+	private CheckBoxPreference googlBox;
+	private BitlyCredsDialog bitlyCreds;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -71,17 +71,16 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
 		addPreferencesFromResource(R.xml.prefs);
 
 		sharedPrefs = getPreferenceScreen().getSharedPreferences();
-		prefsEditor = sharedPrefs.edit();
 
-		mGooglBox = (CheckBoxPreference) findPreference(getString(R.string.prefs_key_googl_chkbox));
-		mBitlyCreds = (BitlyCredsDialog) findPreference(getString(R.string.prefs_key_bitly_creds));
+		googlBox = (CheckBoxPreference) findPreference(getString(R.string.prefs_key_googl_chkbox));
+		bitlyCreds = (BitlyCredsDialog) findPreference(getString(R.string.prefs_key_bitly_creds));
 
-		setSummary(mBitlyCreds, getString(R.string.prefs_key_bitly_username), getString(R.string.prefs_bitly_creds_summary));
-		setSummary(mGooglBox, getString(R.string.prefs_key_googl_account), "");
+		setSummary(bitlyCreds, getString(R.string.prefs_key_bitly_username), getString(R.string.prefs_bitly_creds_summary));
+		setSummary(googlBox, getString(R.string.prefs_key_googl_account), "");
 
-		if (mGooglBox.isChecked())
+		if (googlBox.isChecked())
 		{
-			mBitlyCreds.setEnabled(false);
+			bitlyCreds.setEnabled(false);
 		}
 
 		final Preference version = findPreference(getString(R.string.prefs_key_version));
@@ -120,29 +119,31 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
 		sharedPrefs.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
+	@SuppressLint("CommitPrefEdits")
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
 	{
 		if (key.equals(getString(R.string.prefs_key_bitly_username)))
 		{
-			setSummary(mBitlyCreds, key, getString(R.string.prefs_bitly_creds_summary));
+			setSummary(bitlyCreds, key, getString(R.string.prefs_bitly_creds_summary));
 		}
 		else if (key.equals(getString(R.string.prefs_key_googl_chkbox)))
 		{
-			final boolean checked = mGooglBox.isChecked();
+			final boolean checked = googlBox.isChecked();
 
-			mBitlyCreds.setEnabled(!checked);
+			bitlyCreds.setEnabled(!checked);
 
-			prefsEditor.putBoolean(getString(R.string.prefs_key_googl_enabled), checked);
+			final Editor editor = sharedPrefs.edit();
+			editor.putBoolean(getString(R.string.prefs_key_googl_enabled), checked);
 
 			if (!checked)
 			{
-				prefsEditor.putString(getString(R.string.prefs_key_googl_account), "");
-				prefsEditor.putLong(getString(R.string.prefs_key_googl_token_expiry), 0L);
-				mGooglBox.setSummary("");
+				editor.putString(getString(R.string.prefs_key_googl_account), "");
+				editor.putLong(getString(R.string.prefs_key_googl_token_expiry), 0L);
+				googlBox.setSummary("");
 			}
 
-			prefsEditor.commit();
+			editor.commit();
 		}
 	}
 
