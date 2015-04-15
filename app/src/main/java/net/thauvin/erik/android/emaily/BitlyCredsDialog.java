@@ -33,6 +33,7 @@
  */
 package net.thauvin.erik.android.emaily;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -43,63 +44,65 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.support.annotation.NonNull;
 
 /**
  * The <code>BitlyCredsDialog</code> class implements a bit.ly credential dialog.
- * 
+ *
  * @author <a href="mailto:erik@thauvin.net">Erik C. Thauvin</a>
  * @created March 28, 2012
  * @since 1.0
  */
 public class BitlyCredsDialog extends DialogPreference
 {
-	private final Context mContext;
-	private EditText username;
-	private EditText apikey;
+    private final Context context;
+    private EditText username;
+    private EditText apikey;
 
-	public BitlyCredsDialog(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-		mContext = context;
-		setPersistent(false);
-	}
+    public BitlyCredsDialog(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+        this.context = context;
+        setPersistent(false);
+    }
 
-	@Override
-	protected void onBindDialogView(View view)
-	{
-		super.onBindDialogView(view);
+    @Override
+    protected void onBindDialogView(@NonNull View view)
+    {
+        super.onBindDialogView(view);
 
-		final SharedPreferences sharedPrefs = getSharedPreferences();
-		username = (EditText) view.findViewById(R.id.bitly_username_edit);
-		apikey = (EditText) view.findViewById(R.id.bitly_apikey_edit);
-		final TextView textFld = (TextView) view.findViewById(R.id.bitly_text_fld);
+        final SharedPreferences sharedPrefs = getSharedPreferences();
+        username = (EditText) view.findViewById(R.id.bitly_username_edit);
+        apikey = (EditText) view.findViewById(R.id.bitly_apikey_edit);
+        final TextView textFld = (TextView) view.findViewById(R.id.bitly_text_fld);
 
-		username.setText(sharedPrefs.getString(mContext.getString(R.string.prefs_key_bitly_username), ""));
-		apikey.setText(sharedPrefs.getString(mContext.getString(R.string.prefs_key_bitly_apikey), ""));
+        username.setText(sharedPrefs.getString(context.getString(R.string.prefs_key_bitly_username), ""));
+        apikey.setText(sharedPrefs.getString(context.getString(R.string.prefs_key_bitly_apikey), ""));
 
-		textFld.setOnClickListener(new View.OnClickListener()
-		{
-			public void onClick(View v)
-			{
-				final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mContext.getString(R.string.prefs_bitly_creds_url)));
-				mContext.startActivity(intent);
-			}
-		});
-	}
+        textFld.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.prefs_bitly_creds_url)));
+                context.startActivity(intent);
+            }
+        });
+    }
 
-	@Override
-	protected void onDialogClosed(boolean positiveResult)
-	{
-		super.onDialogClosed(positiveResult);
+    @SuppressLint("CommitPrefEdits")
+    @Override
+    protected void onDialogClosed(boolean positiveResult)
+    {
+        super.onDialogClosed(positiveResult);
 
-		if (positiveResult)
-		{
-			final SharedPreferences sharedPrefs = getSharedPreferences();
-			final Editor editor = sharedPrefs.edit();
-			editor.putString(mContext.getString(R.string.prefs_key_bitly_username), username.getText().toString());
-			editor.putString(mContext.getString(R.string.prefs_key_bitly_apikey), apikey.getText().toString());
-			editor.commit();
-		}
+        if (positiveResult)
+        {
+            final SharedPreferences sharedPrefs = getSharedPreferences();
+            final Editor editor = sharedPrefs.edit();
+            editor.putString(context.getString(R.string.prefs_key_bitly_username), username.getText().toString());
+            editor.putString(context.getString(R.string.prefs_key_bitly_apikey), apikey.getText().toString());
+            editor.commit();
+        }
 
-	}
+    }
 }
