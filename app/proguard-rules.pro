@@ -79,3 +79,4 @@
 -keep class com.google.api.client.googleapis.json.*
 -dontwarn org.apache.commons.codec.binary.StringUtils
 -dontwarn org.apache.commons.codec.binary.Base64
+-dontwarn com.google.api.client.http.apache.*

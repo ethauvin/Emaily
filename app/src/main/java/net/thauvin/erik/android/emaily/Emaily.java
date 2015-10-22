@@ -33,15 +33,6 @@
  */
 package net.thauvin.erik.android.emaily;
 
-import static com.rosaloves.bitlyj.Bitly.as;
-import static com.rosaloves.bitlyj.Bitly.shorten;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.Date;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
@@ -78,6 +69,15 @@ import com.google.api.services.urlshortener.Urlshortener;
 import com.google.api.services.urlshortener.UrlshortenerRequest;
 import com.google.api.services.urlshortener.model.Url;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.Date;
+
+import static com.rosaloves.bitlyj.Bitly.as;
+import static com.rosaloves.bitlyj.Bitly.shorten;
+
 /**
  * The <code>Emaily</code> class implements a URL shortener intent.
  *
@@ -92,6 +92,17 @@ public class Emaily extends Activity
 
     private String appName;
     private SharedPreferences sharedPrefs;
+
+    /**
+     * Validates a string.
+     *
+     * @param s The string to validate.
+     * @return returns <code>true</code> if the string is not empty or null, <code>false</code> otherwise.
+     */
+    public static boolean isValid(String s)
+    {
+        return (s != null) && (!s.trim().isEmpty());
+    }
 
     @SuppressLint("CommitPrefEdits")
     @Override
@@ -288,17 +299,6 @@ public class Emaily extends Activity
         sharedPrefs.edit().putLong(getString(R.string.prefs_key_googl_token_expiry), 0L).commit();
 
         startEmailyTask(intent, new Account(getPref(R.string.prefs_key_googl_account), ACCOUNT_TYPE), true);
-    }
-
-    /**
-     * Validates a string.
-     *
-     * @param s The string to validate.
-     * @return returns <code>true</code> if the string is not empty or null, <code>false</code> otherwise.
-     */
-    public static boolean isValid(String s)
-    {
-        return (s != null) && (!s.trim().isEmpty());
     }
 
     /**
@@ -643,10 +643,10 @@ public class Emaily extends Activity
      */
     private class EmailyResult
     {
+        private final Intent intent;
         private int code = 0;
         private String message;
         private boolean retry = false;
-        private final Intent intent;
 
         public EmailyResult(Intent intent)
         {
@@ -656,6 +656,11 @@ public class Emaily extends Activity
         public int getCode()
         {
             return code;
+        }
+
+        public void setCode(int code)
+        {
+            this.code = code;
         }
 
         public String getMessage()
@@ -668,6 +673,11 @@ public class Emaily extends Activity
             {
                 return "";
             }
+        }
+
+        public void setMessage(String message)
+        {
+            this.message = message;
         }
 
         public Intent getIntent()
@@ -683,16 +693,6 @@ public class Emaily extends Activity
         public boolean isRetry()
         {
             return retry;
-        }
-
-        public void setCode(int code)
-        {
-            this.code = code;
-        }
-
-        public void setMessage(String message)
-        {
-            this.message = message;
         }
 
         public void setRetry(boolean retry)
