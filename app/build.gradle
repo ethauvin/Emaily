@@ -27,7 +27,7 @@ dependencies {
     //implementation 'androidx.appcompat:appcompat:1.1.0'
     //implementation 'androidx.preference:preference:1.1.1'
 
-    implementation 'net.thauvin.erik:bitly-shorten:0.9.2'
+    implementation 'net.thauvin.erik:bitly-shorten:0.9.3'
     implementation 'net.thauvin.erik:isgd-shorten:0.9.1'
 
     testImplementation 'junit:junit:4.13'

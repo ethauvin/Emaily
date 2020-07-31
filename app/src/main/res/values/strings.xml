@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="alert_error">Sorry. An error was returned by %2$s while shortening the url: %1$s</string>
+    <string name="alert_http_status_code">HTTP Status Code %d</string>
     <string name="alert_nocreds">Please provide your credentials to shorten urls.</string>
-    <string name="alert_nohost">Sorry. Could not connect to %1$s.</string>
+    <string name="alert_nohost">Sorry. Could not connect to %1$s: %2$s</string>
     <string name="alert_notfound">Sorry. No applications can perform this action.</string>
     <string name="alert_notfound_clip">Sorry. No applications can perform this action. The shortened url has been copied to the clipboard.</string>
     <string name="app_name">Emaily</string>

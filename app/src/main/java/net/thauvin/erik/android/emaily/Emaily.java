@@ -45,13 +45,12 @@ import android.text.ClipboardManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import net.thauvin.erik.bitly.Bitly;
+import net.thauvin.erik.bitly.Bitlinks;
 import net.thauvin.erik.isgd.Isgd;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
-
 
 /**
  * The <code>Emaily</code> class implements a URL shortener intent.
@@ -110,7 +109,6 @@ public class Emaily extends Activity {
         return sharedPrefs.getString(getString(id), defaultValue);
     }
 
-    @SuppressLint("CommitPrefEdits")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -246,12 +244,15 @@ public class Emaily extends Activity {
                                 Log.d(appName, "is.gd -> " + item);
                                 shortUrl.append(Isgd.shorten(item));
                             } else {
-                                final Bitly bitly = new Bitly(keytoken);
-                                shortUrl.append(bitly.bitlinks().shorten(item));
-                                if (shortUrl.toString().equals(item)) {
+                                final Bitlinks bitlinks = new Bitlinks(keytoken);
+                                shortUrl.append(bitlinks.shorten(item));
+                                if (!bitlinks.getLastCallResponse().isSuccessful()) {
+                                    final int resultCode = bitlinks.getLastCallResponse()
+                                                                   .getResultCode();
                                     result.setCode(R.string.alert_error);
-                                    //@TODO fixme
-                                    result.setMessage("TBD");
+                                    result.setMessage(String.format(
+                                            getString(R.string.alert_http_status_code),
+                                            resultCode));
                                 }
                             }
                         } catch (Exception e) {
@@ -262,7 +263,11 @@ public class Emaily extends Activity {
                                 result.setMessage(cause.getMessage());
                             } else {
                                 result.setCode(R.string.alert_error);
-                                result.setMessage(e.getMessage());
+                                if (cause != null) {
+                                    result.setMessage(cause.getMessage());
+                                } else {
+                                    result.setMessage(e.getMessage());
+                                }
                             }
                         }
 
@@ -282,8 +287,8 @@ public class Emaily extends Activity {
             }
 
             if (shortUrl.length() > 0) {
-                    emailIntent.putExtra(Intent.EXTRA_TEXT, shortUrl.toString());
-                    Log.d(appName, "URL: " + emailIntent.getStringExtra(Intent.EXTRA_TEXT));
+                emailIntent.putExtra(Intent.EXTRA_TEXT, shortUrl.toString());
+                Log.d(appName, "URL: " + emailIntent.getStringExtra(Intent.EXTRA_TEXT));
 
                 if (!isValid(pageTitle) && textBefore.length() > 0) {
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, textBefore.toString());
@@ -313,8 +318,11 @@ public class Emaily extends Activity {
                     }
 
                     result.setCode(R.string.alert_notfound_clip);
+                    result.setMessage(getString(R.string.alert_notfound_clip));
+
                 } else {
                     result.setCode(R.string.alert_notfound);
+                    result.setMessage(getString(R.string.alert_notfound));
                 }
             }
 
@@ -334,14 +342,14 @@ public class Emaily extends Activity {
             }
 
             if (result.hasError()) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(result.getCode(),
-                                  result.getMessage(),
-                                  isGd ? getString(R.string.prefs_isgd_title)
-                                       : getString(R.string.prefs_bitly_title)), Toast.LENGTH_LONG)
-                     .show();
-
+                final String msg = getString(result.getCode(),
+                                             result.getMessage(),
+                                             isGd ? getString(R.string.prefs_isgd_title)
+                                                  : getString(R.string.prefs_bitly_title));
+                Log.d(appName, msg);
+                Toast.makeText(getApplicationContext(),
+                               getString(result.getCode(), result.getMessage(), msg),
+                               Toast.LENGTH_LONG).show();
             }
 
             Emaily.this.finish();
