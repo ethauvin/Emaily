@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/prefs_googl_title">
+    <PreferenceCategory android:title="@string/prefs_isgd_title">
         <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="@string/prefs_key_googl_chkbox"
-            android:title="@string/prefs_googl_chkbox_title"/>
+                android:defaultValue="true"
+                android:key="@string/prefs_key_isgd_chkbox"
+                android:title="@string/prefs_isgd_chkbox_title" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/prefs_bitly_title">
         <net.thauvin.erik.android.emaily.BitlyCredsDialog
-            android:dialogLayout="@layout/bitlycreds"
-            android:dialogTitle="@string/prefs_bitly_creds_dialog_title"
-            android:key="@string/prefs_key_bitly_creds"
-            android:negativeButtonText="@string/prefs_bitly_creds_cancel"
-            android:positiveButtonText="@string/prefs_bitly_creds_ok"
-            android:summary="@string/prefs_bitly_creds_summary"
-            android:title="@string/prefs_bitly_creds_title">
-        </net.thauvin.erik.android.emaily.BitlyCredsDialog>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/prefs_html_title">
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_key_html_chkbox"
-            android:title="@string/prefs_html_chkbox_title"/>
+                android:dialogLayout="@layout/bitlycreds"
+                android:dialogTitle="@string/prefs_bitly_creds_dialog_title"
+                android:key="@string/prefs_key_bitly_creds"
+                android:negativeButtonText="@string/prefs_bitly_creds_cancel"
+                android:positiveButtonText="@string/prefs_bitly_creds_ok"
+                android:summary="@string/prefs_bitly_creds_summary_default"
+                android:title="@string/prefs_bitly_creds_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/prefs_about_title">
         <PreferenceScreen
-            android:summary="@string/prefs_help_summary"
-            android:title="@string/prefs_help_title">
+                android:summary="@string/prefs_help_summary"
+                android:title="@string/prefs_help_title">
             <intent
-                android:action="android.intent.action.VIEW"
-                android:data="@string/prefs_help_url"/>
+                    android:action="android.intent.action.VIEW"
+                    android:data="@string/prefs_help_url" />
         </PreferenceScreen>
         <PreferenceScreen
-            android:key="@string/prefs_key_feedback"
-            android:summary="@string/prefs_feedback_summary"
-            android:title="@string/prefs_feedback_title">
+                android:key="@string/prefs_key_feedback"
+                android:summary="@string/prefs_feedback_summary"
+                android:title="@string/prefs_feedback_title">
             <intent
-                android:action="android.intent.action.VIEW"
-                android:data="@string/prefs_feedback_url"/>
+                    android:action="android.intent.action.VIEW"
+                    android:data="@string/prefs_feedback_url" />
         </PreferenceScreen>
-        <Preference
-            android:enabled="false"
-            android:key="@string/prefs_key_version"
-            android:singleLine="true"
-            android:summary="@string/prefs_copyright"
-            android:title="@string/prefs_version_title"/>
+        <PreferenceScreen
+                android:key="@string/prefs_key_privacy"
+                android:title="@string/prefs_privacy_title">
+            <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="@string/prefs_privacy_url" />
+        </PreferenceScreen>
+        <PreferenceScreen
+                android:key="@string/prefs_key_version"
+                android:summary="@string/prefs_copyright"
+                android:title="@string/prefs_version_title">
+            <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="@string/prefs_author_url" />
+        </PreferenceScreen>
     </PreferenceCategory>
 
 </PreferenceScreen>
