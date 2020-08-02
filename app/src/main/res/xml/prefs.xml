@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/prefs_isgd_title">
-        <CheckBoxPreference
+        <SwitchPreference
                 android:defaultValue="true"
                 android:key="@string/prefs_key_isgd_chkbox"
                 android:title="@string/prefs_isgd_chkbox_title" />

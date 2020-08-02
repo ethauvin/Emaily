@@ -9,7 +9,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 2
-        versionName "1.2.0-beta1"
+        versionName "1.2.0-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,8 +24,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    //implementation 'androidx.appcompat:appcompat:1.1.0'
-    //implementation 'androidx.preference:preference:1.1.1'
 
     implementation 'net.thauvin.erik:bitly-shorten:0.9.3'
     implementation 'net.thauvin.erik:isgd-shorten:0.9.1'

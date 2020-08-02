@@ -39,10 +39,10 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 
 import java.util.Locale;
 
@@ -56,7 +56,7 @@ import java.util.Locale;
 @SuppressWarnings("deprecation")
 public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenceChangeListener {
     private BitlyCredsDialog bitlyCreds;
-    private CheckBoxPreference isgdBox;
+    private SwitchPreference isgdBox;
     private SharedPreferences sharedPrefs;
 
     @Override
@@ -67,7 +67,7 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
 
         sharedPrefs = getPreferenceScreen().getSharedPreferences();
 
-        isgdBox = (CheckBoxPreference) findPreference(getString(R.string.prefs_key_isgd_chkbox));
+        isgdBox = (SwitchPreference) findPreference(getString(R.string.prefs_key_isgd_chkbox));
         bitlyCreds = (BitlyCredsDialog) findPreference(getString(R.string.prefs_key_bitly_creds));
 
         setBitlyCredsSummary();
