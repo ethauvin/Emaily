@@ -10,10 +10,10 @@
     <string name="app_name">Emaily</string>
     <string name="prefs_about_title">About</string>
     <string name="prefs_author_url">https://m.thauvin.net/android/</string>
-    <string name="prefs_bitly_creds_apikey_hint">Enter access token…</string>
+    <string name="prefs_bitly_creds_apitoken_hint">Enter access token…</string>
     <string name="prefs_bitly_creds_cancel">Cancel</string>
     <string name="prefs_bitly_creds_dialog_title">Bitly API Access Token</string>
-    <string name="prefs_bitly_creds_noapi"><u>Need an Access Token?</u></string>
+    <string name="prefs_bitly_creds_needtoken"><u>Need an Access Token?</u></string>
     <string name="prefs_bitly_creds_ok">OK</string>
     <string name="prefs_bitly_creds_summary_default">Enter your access token…</string>
     <string name="prefs_bitly_creds_summary_edit">Click to edit or change…</string>
@@ -30,7 +30,7 @@
     <string name="prefs_help_url">http://m.thauvin.net/android/Emaily/help/</string>
     <string name="prefs_isgd_chkbox_title">Use as shorterner?</string>
     <string name="prefs_isgd_title">is.gd</string>
-    <string name="prefs_key_bitly_apikey">prefs_bitly_apikey</string>
+    <string name="prefs_key_bitly_apitoken">prefs_bitly_apitoken</string>
     <string name="prefs_key_bitly_creds">prefs_bitly_creds</string>
     <string name="prefs_key_feedback">prefs_feedback</string>
     <string name="prefs_key_isgd_chkbox">prefs_isgd_chkbox</string>

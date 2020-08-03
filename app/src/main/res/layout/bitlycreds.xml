@@ -6,21 +6,21 @@
         android:paddingTop="20dip">
 
     <EditText
-            android:id="@+id/bitly_apikey_edit"
+            android:id="@+id/bitly_accesstoken_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dip"
             android:layout_marginRight="20dip"
             android:autofillHints=""
             android:gravity="fill_horizontal"
-            android:hint="@string/prefs_bitly_creds_apikey_hint"
+            android:hint="@string/prefs_bitly_creds_apitoken_hint"
             android:inputType="textPassword"
-            android:key="@string/prefs_key_bitly_apikey"
+            android:key="@string/prefs_key_bitly_apitoken"
             android:scrollHorizontally="true"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-            android:id="@+id/bitly_text_fld"
+            android:id="@+id/bitly_needtoken_textview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dip"
@@ -28,7 +28,7 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/prefs_bitly_creds_noapi"
+            android:text="@string/prefs_bitly_creds_needtoken"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#eda712" />
 </LinearLayout>

@@ -116,7 +116,7 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(getString(R.string.prefs_key_bitly_apikey))) {
+        if (key.equals(getString(R.string.prefs_key_bitly_apitoken))) {
             setBitlyCredsSummary();
         } else if (key.equals(getString(R.string.prefs_key_isgd_chkbox))) {
             final boolean checked = isgdBox.isChecked();
@@ -133,7 +133,7 @@ public class EmailyPrefs extends PreferenceActivity implements OnSharedPreferenc
      * Sets the bit.ly credentials summary.
      */
     private void setBitlyCredsSummary() {
-        if (Emaily.isValid(sharedPrefs.getString(getString(R.string.prefs_key_bitly_apikey), ""))) {
+        if (Emaily.isValid(sharedPrefs.getString(getString(R.string.prefs_key_bitly_apitoken), ""))) {
             bitlyCreds.setSummary(getString(R.string.prefs_bitly_creds_summary_edit));
         } else {
             bitlyCreds.setSummary(getString(R.string.prefs_bitly_creds_summary_default));

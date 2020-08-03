@@ -67,10 +67,10 @@ public class BitlyCredsDialog extends DialogPreference
         super.onBindDialogView(view);
 
         final SharedPreferences sharedPrefs = getSharedPreferences();
-        apikey = view.findViewById(R.id.bitly_apikey_edit);
-        final TextView textFld = view.findViewById(R.id.bitly_text_fld);
+        apikey = view.findViewById(R.id.bitly_accesstoken_edittext);
+        final TextView textFld = view.findViewById(R.id.bitly_needtoken_textview);
 
-        apikey.setText(sharedPrefs.getString(context.getString(R.string.prefs_key_bitly_apikey), ""));
+        apikey.setText(sharedPrefs.getString(context.getString(R.string.prefs_key_bitly_apitoken), ""));
 
         textFld.setOnClickListener(new View.OnClickListener()
         {
@@ -93,7 +93,7 @@ public class BitlyCredsDialog extends DialogPreference
             final SharedPreferences sharedPrefs = getSharedPreferences();
             final Editor editor = sharedPrefs.edit();
 
-            editor.putString(context.getString(R.string.prefs_key_bitly_apikey), apikey.getText().toString());
+            editor.putString(context.getString(R.string.prefs_key_bitly_apitoken), apikey.getText().toString());
             editor.apply();
         }
 

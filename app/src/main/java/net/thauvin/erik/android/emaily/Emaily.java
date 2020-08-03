@@ -141,7 +141,7 @@ public class Emaily extends Activity {
             task = new EmailyTask("", isGd);
         } else {
             //noinspection ConstantConditions
-            task = new EmailyTask(getPref(R.string.prefs_key_bitly_apikey), isGd);
+            task = new EmailyTask(getPref(R.string.prefs_key_bitly_apitoken), isGd);
         }
 
         task.execute(intent);
