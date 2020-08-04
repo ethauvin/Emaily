@@ -25,18 +25,18 @@
 <body>
     <div class="jumbotron">
         <h2 class="display-5">Emaily <small class="text-muted">for Android</small></h2>
-        <p class="lead">Emaily makes it easy to share shortened links directly from your phone's options menu.</p>
-        <p>No copy/paste required. Long URLs are squeezed into fewer characters using the <a
-                href="https://is.gd">is.gd</a> or <a href="https://bit.ly">bit.ly</a> services.</p>
+        <blockquote class="blockquote">
+            <p class="mb-0 font-italic">A simple app that makes things easier, and helps us to save some time.</p>
+            <footer class="blockquote-footer"><cite title="Source Title">AndroidZoom</cite></footer>
+        </blockquote>
         <p class="sshot">
             <a
                 href="https://play.google.com/store/apps/details?id=net.thauvin.erik.android.emaily&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img
                     alt="Get it on Google Play" src="images/google-play-badge-sm.png" /></a>
         </p>
-        <blockquote class="blockquote">
-            <p class="mb-0 font-italic">A simple app that makes things easier, and helps us to save some time.</p>
-            <footer class="blockquote-footer"><cite title="Source Title">AndroidZoom</cite></footer>
-        </blockquote>
+        <p class="lead">Emaily makes it easy to share shortened links from your phone.</p>
+        <p class="lead">No copy/paste required. Long URLs are squeezed into fewer characters using <a
+                href="https://is.gd">is.gd</a> or <a href="https://bit.ly">bit.ly</a>.</p>
     </div>
     <div class="card mb-3">
         <h3 class="card-header">How to use&hellip;</h3>
