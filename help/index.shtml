@@ -7,6 +7,10 @@
     <title>Emaily for Android</title>
     <link rel="stylesheet" href="includes/bootstrap.min.css">
     <style>
+        html {
+            font-size: 14px;
+        }
+
         body {
             padding: 1.5rem
         }
@@ -16,8 +20,6 @@
             margin-bottom: 1.5rem
         }
     </style>
-    <script>window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date; ga('create', 'UA-20827507-1', 'auto'); ga('send', 'pageview');</script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
 </head>
 
 <body>
@@ -32,7 +34,7 @@
                     alt="Get it on Google Play" src="images/google-play-badge-sm.png" /></a>
         </p>
         <blockquote class="blockquote">
-            <p class="mb-0">A simple app that makes things easier, and helps us to save some time.</p>
+            <p class="mb-0 font-italic">A simple app that makes things easier, and helps us to save some time.</p>
             <footer class="blockquote-footer"><cite title="Source Title">AndroidZoom</cite></footer>
         </blockquote>
     </div>
@@ -76,6 +78,7 @@
             </p>
         </div>
     </div>
+    <!--#include file="includes/google-analytics-async.inc" -->
 </body>
 
 </html>
